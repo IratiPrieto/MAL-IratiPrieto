@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MAL-IratiPrieto</string>
+    <string name="email">Email</string>
+    <string name="password">Contraseña</string>
+    <string name="forgotPassword">¿Has olvidado la contraseña?</string>
+    <string name="firstName">Nombre</string>
+    <string name="lastName">Apellido</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="createAct">Crear cuenta</string>
+    <string name="find_user_s_location">Localizar</string>
+    <string name="viewMap">Ver mapa</string>
+    <string name="changeSettings">Ajustes</string>
+    <string name="changeConUsers">Mis amigas</string>
+    <string name="distance">Distancia (km)</string>
+    <string name="time">Tiempo (min)</string>
+    <string name="viewSafeMap">Elige tu posición segura</string>
+    <string name="chooseDistance">¿Cuánto puedes alejarte de tu posición segura?</string>
+    <string name="chooseTime">¿Cada cuanto tiempo quieres guardar tu ubicación?</string>
+    <string name="save">Guardar</string>
+</resources>

@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">MAL-IratiPrieto</string>
+    <string name="email">Email-a</string>
+    <string name="password">Pasahitza</string>
+    <string name="forgotPassword">Pasahitza ahaztu duzu?</string>
+    <string name="firstName">Izena</string>
+    <string name="lastName">Abizena</string>
+    <string name="login">Saioa hasi</string>
+    <string name="createAct">Kontua sortu</string>
+    <string name="title_activity_maps" translatable="false">MapsActivity</string>
+    <string name="find_user_s_location">Posizioa bilatu</string>
+    <string name="viewMap">Mapa ikusi</string>
+    <string name="changeSettings">Ezarpenak</string>
+    <string name="changeConUsers">Nire lagunak</string>
+    <string name="distance">Distantzia (km)</string>
+    <string name="time">Denbora (min)</string>
+    <string name="chooseDistance">Zure puntu segurutik zer distantzia urrundu ahal zara?</string>
+    <string name="chooseTime">Zenbat denboraro gorde nahi duzu zure posizioa?</string>
+    <string name="viewSafeMap">Posizio segurua aukeratu</string>
+    <string name="save">Gorde</string>
+    <string name="savePos">Hasi posizioa gordetzen</string>
+</resources>

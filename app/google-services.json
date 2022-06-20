@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "640937964451",
+    "firebase_url": "https://mal-iratiprieto-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "mal-iratiprieto",
+    "storage_bucket": "mal-iratiprieto.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:640937964451:android:3a1a508a42d0caea272016",
+        "android_client_info": {
+          "package_name": "eus.ehu.mal_iratiprieto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "640937964451-kgu49c51s3ci296o1sb16j2s8586sp1s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOFUKWSW8J_MCSbSU4-o5f38XUfy5W8V8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "640937964451-kgu49c51s3ci296o1sb16j2s8586sp1s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
