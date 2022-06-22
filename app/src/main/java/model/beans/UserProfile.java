@@ -9,7 +9,30 @@ public class UserProfile {
     private Double time, distance;
     private Double safeLat, safeLong;
     private loc tempLoc;
+    private ArrayList<String> friends = new ArrayList<>(); //Friends' UIDs
+    private String newFriend;
 
+
+
+
+    public String getNewFriend() {
+        return newFriend;
+    }
+
+    public void setNewFriend(String newFriend) {
+        this.newFriend = newFriend;
+    }
+
+    public ArrayList<String> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(ArrayList<String> friends) {
+        this.friends = friends;
+    }
+    public void addFriend(String friend){
+        this.friends.add(friend);
+    }
 
     public loc getTempLoc() {
         return tempLoc;

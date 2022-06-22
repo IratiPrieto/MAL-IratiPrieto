@@ -32,7 +32,7 @@ class HomeActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        time = (data.user.time).toLong();
+        time = (data.user.time).toLong()
 
 
 
@@ -47,7 +47,9 @@ class HomeActivity : AppCompatActivity(){
 
         save_location_btn.setOnClickListener {
 
-            saveTempPos()
+            val executorService2 = Executors.newScheduledThreadPool(10)
+            executorService2.scheduleAtFixedRate({
+                saveTempPos()}, 0, time, TimeUnit.MINUTES)
 
         }
     }
@@ -99,10 +101,7 @@ class HomeActivity : AppCompatActivity(){
             .addOnCompleteListener { task: Task<DataSnapshot?> ->
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Safe position saved2", Toast.LENGTH_LONG).show()
-                    /*   val openMainActivity =
-                           Intent(this, HomeActivity::class.java)
-                       openMainActivity.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
-                       startActivityIfNeeded(openMainActivity, 0)*/
+
                 }
 
                 //  finish()

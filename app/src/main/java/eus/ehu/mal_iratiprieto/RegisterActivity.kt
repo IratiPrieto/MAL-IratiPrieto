@@ -1,11 +1,8 @@
 package eus.ehu.mal_iratiprieto
 
-import android.app.ProgressDialog
 import android.content.Intent
-import android.nfc.Tag
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
@@ -103,12 +100,29 @@ class RegisterActivity : AppCompatActivity() {
                     }
 
 
-/*Damos de alta la información del usuario enviamos el la referencia para guardarlo en la base de datos  de preferencia enviamos el id para que no se repita*/
+/*Tabla users, ID=UID*/
                     val currentUserDb = databaseReference.child(user.uid)
-//Agregamos el nombre y el apellido dentro de user/id/
+
                     currentUserDb.child("firstName").setValue(firstName)
                     currentUserDb.child("lastName").setValue(lastName)
+                    currentUserDb.child("email").setValue(email)
                     uid = user.uid
+
+/*Tabla sessions, ID=UID*/
+                    val dbRef = FirebaseDatabase.getInstance().reference
+                    dbRef.child("sessions").child(data.user.id).setValue(data.user.id)
+
+                    data.user.distance = 1.0
+                    data.user.safeLat = 43.257
+                    data.user.safeLong = -2.92344
+                    data.user.time = 1.0
+                    dbRef.child("sessions").child(data.user.id).child("distance").setValue(1)
+                    dbRef.child("sessions").child(data.user.id).child("safeLat").setValue(43.257)
+                    dbRef.child("sessions").child(data.user.id).child("safeLong").setValue(-2.92344)
+                    dbRef.child("sessions").child(data.user.id).child("time").setValue(1)
+
+
+
 //Por último nos vamos a la vista home
                     updateUserInfoAndGoHome()
 

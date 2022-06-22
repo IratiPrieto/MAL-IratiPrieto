@@ -15,6 +15,7 @@ public interface Backend{
     Task<DataSnapshot> setUserData();
     Task<DataSnapshot> setUserSafeData();
     Task<DataSnapshot> setUserSettings();
+    Task<DataSnapshot> addFriend();
 
     UserProfile getUserProfile();
 }

@@ -11,6 +11,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import model.backend.Data
@@ -47,7 +48,7 @@ class MapsActivity: AppCompatActivity(), OnMapReadyCallback {
 
                         //create a marker at the read location and display it on the map
                         map.addMarker(MarkerOptions().position(latLng)
-                            .title("The user is currently here"))
+                            .title("" + locationLat + ", " +locationLong))
                         val update = CameraUpdateFactory.newLatLngZoom(latLng, 16.0f)
                         //update the camera with the CameraUpdate object
                         map.moveCamera(update)
@@ -57,8 +58,27 @@ class MapsActivity: AppCompatActivity(), OnMapReadyCallback {
                         Log.e(TAG, "No location found")
                     }
                 }
+            val locationLat = data.user.safeLat
+            val locationLong = data.user.safeLong
+            // check if the latitude and longitude is not null
+            if (locationLat != null && locationLong!= null) {
+                // create a LatLng object from location
+                val latLng = LatLng(locationLat, locationLong)
 
-             }
+                //create a marker at the read location and display it on the map
+                map.addMarker(MarkerOptions().position(latLng)
+                    .title("" + locationLat + ", " +locationLong)
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)))
+                val update = CameraUpdateFactory.newLatLngZoom(latLng, 16.0f)
+                //update the camera with the CameraUpdate object
+                map.moveCamera(update)
+            }
+            else {
+                // if location is null , log an error message
+                Log.e(TAG, "No location found")
+            }
+
+            }
 
     }
 

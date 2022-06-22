@@ -6,4 +6,226 @@
     android:layout_height="match_parent"
     tools:context=".FriendsActivity">
 
+    <TextView
+        android:id="@+id/txt_friend1"
+        android:textAlignment="center"
+        android:visibility="invisible"
+        android:layout_width="196dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="108dp"
+        android:ems="10"
+        android:text="Email"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.187"
+        app:layout_constraintStart_toEndOf="@+id/btn_removeFriend1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_friend2"
+        android:textAlignment="center"
+        android:visibility="invisible"
+        android:layout_width="196dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:text="Email"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/btn_removeFriend2"
+        app:layout_constraintTop_toBottomOf="@+id/txt_friend1" />
+
+    <TextView
+        android:id="@+id/txt_friend3"
+        android:textAlignment="center"
+        android:visibility="invisible"
+        android:layout_width="196dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:text="Email"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.187"
+        app:layout_constraintStart_toEndOf="@+id/btn_removeFriend3"
+        app:layout_constraintTop_toBottomOf="@+id/txt_friend2" />
+
+    <TextView
+        android:id="@+id/txt_friend4"
+        android:textAlignment="center"
+        android:visibility="invisible"
+        android:layout_width="196dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:text="Email"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.187"
+        app:layout_constraintStart_toEndOf="@+id/btn_removeFriend4"
+        app:layout_constraintTop_toBottomOf="@+id/txt_friend3" />
+
+    <TextView
+        android:id="@+id/txt_friend5"
+        android:textAlignment="center"
+        android:layout_width="196dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="44dp"
+        android:ems="10"
+        android:text="Email"
+        android:textSize="25dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/btn_removeFriend5"
+        app:layout_constraintTop_toBottomOf="@+id/txt_friend4" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_removeFriend5"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_removeFriend4"
+        app:srcCompat="@android:drawable/ic_delete" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_removeFriend4"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_removeFriend3"
+        app:srcCompat="@android:drawable/ic_delete" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_removeFriend3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_removeFriend2"
+        app:srcCompat="@android:drawable/ic_delete" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_removeFriend2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_removeFriend1"
+        app:srcCompat="@android:drawable/ic_delete" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_removeFriend1"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_delete" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_viewFriend1"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toEndOf="@+id/txt_friend1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_view" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_viewFriend2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:clickable="true"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.892"
+        app:layout_constraintStart_toEndOf="@+id/txt_friend2"
+        app:layout_constraintTop_toBottomOf="@+id/btn_viewFriend1"
+        app:srcCompat="@android:drawable/ic_menu_view" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_viewFriend3"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/txt_friend2"
+        app:layout_constraintTop_toBottomOf="@+id/btn_viewFriend2"
+        app:srcCompat="@android:drawable/ic_menu_view" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_viewFriend4"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toEndOf="@+id/txt_friend3"
+        app:layout_constraintTop_toBottomOf="@+id/btn_viewFriend3"
+        app:srcCompat="@android:drawable/ic_menu_view" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_viewFriend5"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/txt_friend4"
+        app:layout_constraintTop_toBottomOf="@+id/btn_viewFriend4"
+        app:srcCompat="@android:drawable/ic_menu_view" />
+
+    <Button
+        android:id="@+id/btn_newFriend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/addFriend"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_friend5" />
 </androidx.constraintlayout.widget.ConstraintLayout>
