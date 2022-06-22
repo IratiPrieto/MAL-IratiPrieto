@@ -18,4 +18,6 @@
     <string name="chooseDistance">¿Cuánto puedes alejarte de tu posición segura?</string>
     <string name="chooseTime">¿Cada cuanto tiempo quieres guardar tu ubicación?</string>
     <string name="save">Guardar</string>
+    <string name="savePos">Empieza a guardar tu posición</string>
+    <string name="addFriend">Añadir amiga</string>
 </resources>
