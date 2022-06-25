@@ -40,7 +40,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         initialise()
-
+        data = Data.getInstance()
     }
 
 /*Creamos un método para inicializar nuestros elementos del diseño y la autenticación y la base de datos de firebase*/
@@ -107,10 +107,10 @@ class RegisterActivity : AppCompatActivity() {
                     currentUserDb.child("lastName").setValue(lastName)
                     currentUserDb.child("email").setValue(email)
                     uid = user.uid
-
+                    data.user.id = uid
 /*Tabla sessions, ID=UID*/
                     val dbRef = FirebaseDatabase.getInstance().reference
-                    dbRef.child("sessions").child(data.user.id).setValue(data.user.id)
+                    dbRef.child("sessions").child(uid).setValue(uid)
 
                     data.user.distance = 1.0
                     data.user.safeLat = 43.257
@@ -121,7 +121,7 @@ class RegisterActivity : AppCompatActivity() {
                     dbRef.child("sessions").child(data.user.id).child("safeLong").setValue(-2.92344)
                     dbRef.child("sessions").child(data.user.id).child("time").setValue(1)
 
-
+                    data.user.name = firstName
 
 //Por último nos vamos a la vista home
                     updateUserInfoAndGoHome()
@@ -143,9 +143,6 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun updateUserInfoAndGoHome() {
-       data = Data.getInstance()
-       data.user.id = uid
-       data.user.name = firstName
 
         //GO HOME
         var backend: Backend

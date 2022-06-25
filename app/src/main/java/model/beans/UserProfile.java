@@ -10,11 +10,20 @@ public class UserProfile {
     private Double safeLat, safeLong;
     private loc tempLoc;
     private ArrayList<String> friends = new ArrayList<>(); //Friends' UIDs
+    private ArrayList<String> friendsEmails = new ArrayList<>(); //Friends' Emails
     private String newFriend;
 
 
+    public ArrayList<String> getFriendsEmails() {
+        return friendsEmails;
+    }
 
-
+    public void setFriendsEmails(ArrayList<String> friendsEmails) {
+        this.friendsEmails = friendsEmails;
+    }
+    public void addFriendEmail(String friend){
+        this.friendsEmails.add(friend);
+    }
     public String getNewFriend() {
         return newFriend;
     }

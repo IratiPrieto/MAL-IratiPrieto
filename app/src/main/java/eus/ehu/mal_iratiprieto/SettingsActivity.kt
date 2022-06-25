@@ -60,9 +60,25 @@ class SettingsActivity : AppCompatActivity() {
         data = Data.getInstance()
         timeID = findViewById(R.id.textViewTime)
         distanceID = findViewById(R.id.textViewDistance)
+        var time = timeID.text.toString()
+        var dist = distanceID.text.toString()
+        if(time!= "") {
+            if (time.contains("."))
+                data.user.time = time.toDouble()
+            else {
+                time = time + ".0"
+                data.user.time = time.toDouble()
+            }
+        }
+        if(dist!= "") {
+            if (dist.contains("."))
+                data.user.distance = dist.toDouble()
+            else {
+                dist = dist + ".0"
+                data.user.distance = dist.toDouble()
+            }
+        }
 
-        data.user.time = timeID.text.toString().toDouble()
-        data.user.distance = distanceID.text.toString().toDouble()
 
 
     }

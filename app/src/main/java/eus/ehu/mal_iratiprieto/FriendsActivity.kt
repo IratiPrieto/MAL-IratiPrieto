@@ -5,7 +5,11 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.firebase.database.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import model.backend.Data
 
 class FriendsActivity : AppCompatActivity() {
@@ -21,6 +25,53 @@ class FriendsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_friends)
 
         data = Data.getInstance()
+
+        showFriends()
+
+
+
+    }
+    fun checkFriend(idFriend: String): Boolean{
+        var friend = false
+
+
+        //Toast.makeText(context.getApplicationContext(), "Login4", Toast.LENGTH_SHORT).show();
+
+        //viewModel.getAnswersFromUser(this);
+        val dbRef = FirebaseDatabase.getInstance().reference
+
+        val sessionRef = FirebaseDatabase.getInstance().getReference("sessions/$idFriend")
+        val userRef = FirebaseDatabase.getInstance().getReference("Users/$idFriend")
+        sessionRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    // Exist! Do whatever.
+                    dbRef.child("sessions").child(idFriend).get()
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                if(snapshot.child("friends").exists()){
+                                    if(snapshot.child("friends").hasChild(data.user.id)){
+                                        friend = true
+                                        data.user.addFriendEmail(userRef.child(idFriend).child("email").get().toString())
+                                    }
+
+                                }
+                            }
+                        }
+                } else {
+                    // Don't exist! Do something.
+
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
+
+
+
+        return friend
+    }
+    fun showFriends(){
         var j = 1
         for(i in data.user.friends) {
             when (j) {
@@ -85,41 +136,5 @@ class FriendsActivity : AppCompatActivity() {
 
             j++
         }
-
-    }
-    fun checkFriend(idFriend: String): Boolean{
-        var friend = false
-
-
-        //viewModel.getAnswersFromUser(this);
-        val dbRef = FirebaseDatabase.getInstance().reference
-
-        val sessionRef = FirebaseDatabase.getInstance().getReference("sessions/$idFriend")
-
-        sessionRef.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    // Exist! Do whatever.
-                    dbRef.child("sessions").child(idFriend).get()
-                        .addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                if(snapshot.child("friends").exists()){
-                                    if(snapshot.child("friends").hasChild(data.user.id))
-                                        friend = true
-                                }
-                            }
-                        }
-                } else {
-                    // Don't exist! Do something.
-
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {}
-        })
-
-
-
-        return friend
     }
 }
