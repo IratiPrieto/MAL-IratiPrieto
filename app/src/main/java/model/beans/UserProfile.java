@@ -6,13 +6,62 @@ public class UserProfile {
     private String id;
     private String name;
     private ArrayList<loc> locations = new ArrayList<>();
+    private ArrayList<loc> friendLocations = new ArrayList<>();
     private Double time, distance;
     private Double safeLat, safeLong;
     private loc tempLoc;
     private ArrayList<String> friends = new ArrayList<>(); //Friends' UIDs
     private ArrayList<String> friendsEmails = new ArrayList<>(); //Friends' Emails
-    private String newFriend;
+    private String newFriend="", m_text="";
+    private boolean check=false, friendExists=false;
 
+
+
+
+    public ArrayList<loc> getFriendLocations() {
+        return friendLocations;
+    }
+
+    public void setFriendLocations(ArrayList<loc> locations) {
+        this.friendLocations = locations;
+    }
+
+    public void addFriendLocations(loc locations) {
+        this.friendLocations.add(locations);
+    }
+
+    public void delFriend(int i){
+        for(int j=i; i<friends.size()-1; i++){
+            friends.set(j, friends.get(j+1));
+            friendsEmails.set(j, friendsEmails.get(j+1));
+        }
+        friends.remove(friends.size()-1);
+        friendsEmails.remove(friendsEmails.size()-1);
+    }
+
+    public boolean getCheck() {
+        return check;
+    }
+
+    public void setCheck(boolean check) {
+        this.check = check;
+    }
+
+    public boolean getFriendExists() {
+        return friendExists;
+    }
+
+    public void setFriendExists(boolean friendExists) {
+        this.friendExists = friendExists;
+    }
+
+    public String getM_text() {
+        return m_text;
+    }
+
+    public void setM_text(String m_text) {
+        this.m_text = m_text;
+    }
 
     public ArrayList<String> getFriendsEmails() {
         return friendsEmails;
@@ -20,6 +69,9 @@ public class UserProfile {
 
     public void setFriendsEmails(ArrayList<String> friendsEmails) {
         this.friendsEmails = friendsEmails;
+    }
+    public void setFriendEmail(int pos, String email){
+        friendsEmails.set(pos, email);
     }
     public void addFriendEmail(String friend){
         this.friendsEmails.add(friend);

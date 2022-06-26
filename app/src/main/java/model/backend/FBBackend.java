@@ -1,9 +1,6 @@
 package model.backend;
 
 import android.content.Context;
-import android.nfc.Tag;
-import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -19,7 +16,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
-import java.util.Map;
+
+import javax.security.auth.callback.Callback;
 
 import model.beans.UserProfile;
 import model.beans.loc;
@@ -55,7 +53,9 @@ public class FBBackend extends FirebaseHelper implements Backend{
                         if(data.child("friends").exists()){
                             for(DataSnapshot ds : data.child("friends").getChildren()) {
                                 data1.getUser().addFriend(ds.getKey());
+                                getEmail(ds.getKey());
                             }
+
                         }
                         data1.getUser().setTime(data.child("time").getValue(Double.class));
                         data1.getUser().setDistance(data.child("distance").getValue(Double.class));
@@ -71,6 +71,24 @@ public class FBBackend extends FirebaseHelper implements Backend{
                     task.getResult();   // To propagate possible error
                     return data1.getUser();
                 });
+    }
+    public void getEmail(String id){
+            DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+            DatabaseReference usersdRef = rootRef.child("Users");
+            usersdRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                     data1.getUser().addFriendEmail(snapshot.child(id).child("email").getValue(String.class));
+
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+
+
+            });
+
     }
     @Override
     public Task<DataSnapshot> setUserData() {return null;}
@@ -184,6 +202,7 @@ public class FBBackend extends FirebaseHelper implements Backend{
                     return data1.getUser();
                 });
     }
+
     @Override
     public Task<Void> logout() {
         return null;
@@ -194,6 +213,10 @@ public class FBBackend extends FirebaseHelper implements Backend{
         return null;
     }
 
+
+
+
+
     public Task<DataSnapshot> addFriend() {
         FirebaseUser fireUser = FirebaseAuth.getInstance().getCurrentUser();
         if( fireUser == null )
@@ -202,34 +225,187 @@ public class FBBackend extends FirebaseHelper implements Backend{
 
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference();
 
-        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference("sessions/" + data1.getUser().getId());
-        rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        DatabaseReference sessionRef = FirebaseDatabase.getInstance().getReference("sessions/" + data1.getUser().getId());
+
+
+        return dbRef.child("sessions").child(data1.getUser().getId()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.hasChild("friends")) {
-                    HashMap map = new HashMap();
-                    map.put(data1.getUser().getNewFriend(), data1.getUser().getNewFriend());
-                    dbRef.child("sessions").child(data1.getUser().getId()).child("friends").updateChildren(map);
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+
                 } else {
-                    HashMap map = new HashMap();
-                    map.put("friends", "friends");
-                    dbRef.child("sessions").child(data1.getUser().getId()).updateChildren(map);
-
-                    HashMap map2 = new HashMap();
-                    map2.put(data1.getUser().getNewFriend(), data1.getUser().getNewFriend());
-                    dbRef.child("sessions").child(data1.getUser().getId()).child("friends").updateChildren(map);
+                    //data1 = Data.getInstance();
+                    DataSnapshot dataSnapshot = task.getResult();
+                    if (dataSnapshot.hasChild("friends")) {
+                        HashMap map = new HashMap();
+                        map.put(data1.getUser().getNewFriend().toString(), data1.getUser().getNewFriend().toString());
+                        dbRef.child("sessions").child(data1.getUser().getId()).child("friends").updateChildren(map);
+                        data1.getUser().addFriend(data1.getUser().getNewFriend());
+                        data1.getUser().addFriendEmail(data1.getUser().getM_text());
+                    } else {
+                        HashMap map = new HashMap();
+                        map.put("friends", "friends");
+                        dbRef.child("sessions").child(data1.getUser().getId()).updateChildren(map);
+                        HashMap map2 = new HashMap();
+                        map2.put(data1.getUser().getNewFriend().toString(), data1.getUser().getNewFriend().toString());
+                        dbRef.child("sessions").child(data1.getUser().getId()).child("friends").updateChildren(map2);
+                        data1.getUser().addFriend(data1.getUser().getNewFriend());
+                        data1.getUser().addFriendEmail(data1.getUser().getM_text());
+                    }
                 }
-
-            }
-
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                //some code
             }
         });
-        return null;
     }
 
+    public Task<DataSnapshot> getFriendID() {
+        FirebaseUser fireUser = FirebaseAuth.getInstance().getCurrentUser();
+        if( fireUser == null )
+            return Tasks.forException(new Exception("Not logged"));
+        //       user = new UserProfile();
 
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference();
+
+        DatabaseReference sessionRef = FirebaseDatabase.getInstance().getReference("Users");
+        data1.getUser().setFriendExists(false);
+
+        return sessionRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+
+                } else {
+                    //data1 = Data.getInstance();
+                    DataSnapshot dataSnapshot = task.getResult();
+                        for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                            String name = ds.child("email").getValue(String.class);
+                            if(name.equals(data1.getUser().getM_text())){
+                                String key = ds.getKey().toString();
+                                data1.getUser().setNewFriend(key);
+                                data1.getUser().setFriendExists(true);
+                            }
+                        }
+
+
+
+
+
+                }
+            }
+        });
+    }
+
+    public Task<DataSnapshot> addingFriend(){
+
+
+        getFriendID();
+
+        addFriend();
+        return addFriend();
+    }
+
+    public Task<Void> checkingFriend(String id){
+
+        checkFriend(id);
+        return Tasks.forResult(null);
+    }
+    public Task<DataSnapshot> checkFriend(String idFriend) {
+        FirebaseUser fireUser = FirebaseAuth.getInstance().getCurrentUser();
+        if( fireUser == null )
+            return Tasks.forException(new Exception("Not logged"));
+        //       user = new UserProfile();
+
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference();
+
+        DatabaseReference sessionRef = FirebaseDatabase.getInstance().getReference("sessions/"+idFriend);
+
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users/"+idFriend);
+
+
+        return dbRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+
+                    data1.getUser().setCheck(false);
+                } else {
+                    //data1 = Data.getInstance();
+                    DataSnapshot dataSnapshot = task.getResult();
+                    if(dataSnapshot.child("sessions").child(idFriend).child("friends").exists()){
+                        if(dataSnapshot.child("sessions").child(idFriend).child("friends").hasChild(data1.getUser().getId())){
+
+                            data1.getUser().setCheck(true);
+                            String mail = dataSnapshot.child("Users").child(idFriend).child("email").getValue(String.class);
+                          //  data1.getUser().setFriendEmail(data1.getUser().getFriends().size()-1, mail);
+         //                   data1.getUser().addFriendEmail(dbRef.child("Users").child(idFriend).child("email").get().toString());
+                        }else
+                            data1.getUser().setCheck(false);
+
+                    }else
+                        data1.getUser().setCheck(false);
+
+                }
+            }
+        });
+    }
+    public Task<DataSnapshot> deleteFriend(int i) {
+        FirebaseUser fireUser = FirebaseAuth.getInstance().getCurrentUser();
+        if( fireUser == null )
+            return Tasks.forException(new Exception("Not logged"));
+        //       user = new UserProfile();
+
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference();
+
+        DatabaseReference sessionRef = FirebaseDatabase.getInstance().getReference("sessions/"+data1.getUser().getId());
+
+
+
+        return sessionRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+
+                } else {
+                    //data1 = Data.getInstance();
+                    DataSnapshot dataSnapshot = task.getResult();
+                    dataSnapshot.child("friends").child(data1.getUser().getFriends().get(i-1)).getRef().removeValue();
+
+                }
+            }
+        });
+    }
+    public Task<UserProfile> getFriendLoc(int j) {
+
+        //Toast.makeText(context.getApplicationContext(), "Login4", Toast.LENGTH_SHORT).show();
+        FirebaseUser fireUser = FirebaseAuth.getInstance().getCurrentUser();
+        if( fireUser == null )
+            return Tasks.forException(new Exception("Not logged"));
+        //       user = new UserProfile();
+
+        return dbRef("sessions", data1.getUser().getFriends().get(j-1)).get()
+                .continueWithTask( task -> {
+                    DataSnapshot data = task.getResult();
+                    if( data.hasChildren() ) {
+
+
+                        i=0;
+                        while(data.child("loc"+i).exists()){
+                            loc location = new loc();
+                            location.setDate(data.child("loc"+i).child("date").getValue(String.class));
+                            location.setLatitude(data.child("loc"+i).child("latitude").getValue(Double.class));
+                            location.setLongitude(data.child("loc"+i).child("longitude").getValue(Double.class));
+                            data1.getUser().addFriendLocations(location);
+                            i++;
+                        }
+
+
+                        return task;
+                    } else return dbRef("sessions", 1).get().continueWith(subtask -> {
+                        DataSnapshot session = subtask.getResult();
+                        return null;
+                    });
+                }).continueWith(task -> {
+                    task.getResult();   // To propagate possible error
+                    return data1.getUser();
+                });
+    }
 }

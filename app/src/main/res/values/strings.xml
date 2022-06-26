@@ -20,4 +20,5 @@
     <string name="save">Gorde</string>
     <string name="savePos">Hasi posizioa gordetzen</string>
     <string name="addFriend">Laguna gehitu</string>
+    <string name="titleNewFriend">Lagun berriaren email-a</string>
 </resources>

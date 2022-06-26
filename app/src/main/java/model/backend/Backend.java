@@ -16,6 +16,13 @@ public interface Backend{
     Task<DataSnapshot> setUserSafeData();
     Task<DataSnapshot> setUserSettings();
     Task<DataSnapshot> addFriend();
+    Task<DataSnapshot> getFriendID();
+    Task<DataSnapshot> addingFriend();
+    Task<Void> checkingFriend(String id);
+    Task<DataSnapshot> checkFriend(String id);
+    Task<DataSnapshot> deleteFriend(int i);
+    Task<UserProfile> getFriendLoc(int i);
+
 
     UserProfile getUserProfile();
 }

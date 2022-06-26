@@ -20,4 +20,5 @@
     <string name="save">Guardar</string>
     <string name="savePos">Empieza a guardar tu posición</string>
     <string name="addFriend">Añadir amiga</string>
+    <string name="titleNewFriend">Email de la nueva amiga</string>
 </resources>
