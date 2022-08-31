@@ -21,7 +21,9 @@ public interface Backend{
     Task<Void> checkingFriend(String id);
     Task<DataSnapshot> checkFriend(String id);
     Task<DataSnapshot> deleteFriend(int i);
+    Task<DataSnapshot> deleteHist();
     Task<UserProfile> getFriendLoc(int i);
+
 
 
     UserProfile getUserProfile();

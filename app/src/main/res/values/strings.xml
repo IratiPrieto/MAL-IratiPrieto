@@ -14,11 +14,13 @@
     <string name="changeConUsers">Nire lagunak</string>
     <string name="distance">Distantzia (km)</string>
     <string name="time">Denbora (min)</string>
-    <string name="chooseDistance">Zure puntu segurutik zer distantzia urrundu ahal zara?</string>
-    <string name="chooseTime">Zenbat denboraro gorde nahi duzu zure posizioa?</string>
+    <string name="chooseDistance">Zure puntu segurutik zer distantzia urrundu ahal zara? (km)</string>
+    <string name="chooseTime">Zenbat denboraro gorde nahi duzu zure posizioa? (min)</string>
     <string name="viewSafeMap">Posizio segurua aukeratu</string>
     <string name="save">Gorde</string>
     <string name="savePos">Hasi posizioa gordetzen</string>
     <string name="addFriend">Laguna gehitu</string>
     <string name="titleNewFriend">Lagun berriaren email-a</string>
+    <string name="deleteHist" >Posizioen historiala atxindu</string>
+    <string name="changeLanguage">Cambiar idioma</string>
 </resources>

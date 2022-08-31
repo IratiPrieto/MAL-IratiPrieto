@@ -41,6 +41,7 @@ class MapsActivity: AppCompatActivity(), OnMapReadyCallback {
                 for (i in data.user.locations){
                     val locationLat = i.latitude
                     val locationLong = i.longitude
+                    val date = i.date
                     // check if the latitude and longitude is not null
                     if (locationLat != null && locationLong!= null) {
                         // create a LatLng object from location
@@ -48,7 +49,7 @@ class MapsActivity: AppCompatActivity(), OnMapReadyCallback {
 
                         //create a marker at the read location and display it on the map
                         map.addMarker(MarkerOptions().position(latLng)
-                            .title("" + locationLat + ", " +locationLong))
+                            .title(date+": " + locationLat + ", " +locationLong))
                         val update = CameraUpdateFactory.newLatLngZoom(latLng, 16.0f)
                         //update the camera with the CameraUpdate object
                         map.moveCamera(update)

@@ -373,6 +373,37 @@ public class FBBackend extends FirebaseHelper implements Backend{
             }
         });
     }
+    public Task<DataSnapshot> deleteHist(){
+        FirebaseUser fireUser = FirebaseAuth.getInstance().getCurrentUser();
+        if( fireUser == null )
+            return Tasks.forException(new Exception("Not logged"));
+        //       user = new UserProfile();
+
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference();
+
+        DatabaseReference sessionRef = FirebaseDatabase.getInstance().getReference("sessions/"+data1.getUser().getId());
+
+
+
+        return sessionRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+
+                } else {
+                    //data1 = Data.getInstance();
+
+                    DataSnapshot dataSnapshot = task.getResult();
+                    for(int j=0; j<i; j++){
+
+                        dataSnapshot.child("loc"+j).getRef().removeValue();
+
+                    }
+
+                }
+            }
+        });
+    }
     public Task<UserProfile> getFriendLoc(int j) {
 
         //Toast.makeText(context.getApplicationContext(), "Login4", Toast.LENGTH_SHORT).show();
