@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FriendsActivity">
+    tools:context=".FriendsActivity"
+    android:background="@drawable/background">
 
     <TextView
         android:id="@+id/txt_friend1"
@@ -16,6 +17,7 @@
         android:ems="10"
         android:text="Email"
         android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.187"
         app:layout_constraintStart_toEndOf="@+id/btn_removeFriend1"
@@ -32,6 +34,7 @@
         android:ems="10"
         android:text="Email"
         android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/btn_removeFriend2"
@@ -47,6 +50,7 @@
         android:ems="10"
         android:text="Email"
         android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.187"
         app:layout_constraintStart_toEndOf="@+id/btn_removeFriend3"
@@ -62,6 +66,7 @@
         android:ems="10"
         android:text="Email"
         android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.187"
         app:layout_constraintStart_toEndOf="@+id/btn_removeFriend4"
@@ -77,6 +82,7 @@
         android:ems="10"
         android:text="Email"
         android:textSize="16dp"
+        android:textStyle="bold"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -90,6 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:backgroundTint="#9E9A8E"
         android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.073"
@@ -103,6 +110,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:backgroundTint="#9E9A8E"
         android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.073"
@@ -117,6 +125,7 @@
         android:layout_marginTop="20dp"
         android:clickable="true"
         android:visibility="invisible"
+        android:backgroundTint="#9E9A8E"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.073"
         app:layout_constraintStart_toStartOf="parent"
@@ -130,6 +139,7 @@
         android:layout_marginTop="20dp"
         android:clickable="true"
         android:visibility="invisible"
+        android:backgroundTint="#9E9A8E"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.073"
         app:layout_constraintStart_toStartOf="parent"
@@ -143,6 +153,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
         android:clickable="true"
+        android:backgroundTint="#9E9A8E"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.073"
         app:layout_constraintStart_toStartOf="parent"
@@ -154,6 +165,7 @@
         android:id="@+id/btn_viewFriend1"
         android:visibility="invisible"
         android:layout_width="wrap_content"
+        android:backgroundTint="#57504A"
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
         android:clickable="true"
@@ -166,6 +178,7 @@
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_viewFriend2"
         android:layout_width="wrap_content"
+        android:backgroundTint="#57504A"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
@@ -179,42 +192,43 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_viewFriend3"
-        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
         android:layout_marginTop="20dp"
+        android:backgroundTint="#57504A"
         android:clickable="true"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/txt_friend2"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toEndOf="@+id/txt_friend3"
         app:layout_constraintTop_toBottomOf="@+id/btn_viewFriend2"
         app:srcCompat="@android:drawable/ic_menu_view" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_viewFriend4"
-        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="#57504A"
         android:clickable="true"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.48"
-        app:layout_constraintStart_toEndOf="@+id/txt_friend3"
+        app:layout_constraintStart_toEndOf="@+id/txt_friend4"
         app:layout_constraintTop_toBottomOf="@+id/btn_viewFriend3"
         app:srcCompat="@android:drawable/ic_menu_view" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_viewFriend5"
-        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
         android:layout_marginTop="20dp"
+        android:backgroundTint="#57504A"
         android:clickable="true"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/txt_friend4"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toEndOf="@+id/txt_friend5"
         app:layout_constraintTop_toBottomOf="@+id/btn_viewFriend4"
         app:srcCompat="@android:drawable/ic_menu_view" />
 
@@ -228,6 +242,7 @@
         app:layout_constraintHorizontal_bias="0.073"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_removeFriend5"
+        android:backgroundTint="#57504A"
         app:srcCompat="@android:drawable/ic_menu_add" />
 
     <EditText

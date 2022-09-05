@@ -27,15 +27,14 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAU74IGiM5F2UsWDwxq-ePusjmlss_1GX0" />
-
+        <activity
+            android:name=".ConUsersActivity"
+            android:exported="false" />
         <activity
             android:name=".SafeMapActivity"
             android:exported="false" />
         <activity
             android:name=".FriendsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ConUsersActivity"
             android:exported="false" />
         <activity
             android:name=".SettingsActivity"

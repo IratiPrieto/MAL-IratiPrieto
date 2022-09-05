@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabsService
@@ -27,10 +28,15 @@ class HomeActivity : AppCompatActivity(){
     private var dist: Double=0.0
     private lateinit var temporal: loc
     private lateinit var save_location_btn: Button
+    private lateinit var textView_name: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        textView_name = findViewById(R.id.userName)
+        textView_name.text = data.user.name
+
 
         time = (data.user.time).toLong()
 

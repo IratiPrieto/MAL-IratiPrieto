@@ -5,4 +5,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">8dp</item>
     </style>
+
+    <style name="Button.Brown" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">#57504A</item>
+    </style>
 </resources>

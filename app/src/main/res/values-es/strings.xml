@@ -15,12 +15,13 @@
     <string name="distance">Distancia (km)</string>
     <string name="time">Tiempo (min)</string>
     <string name="viewSafeMap">Elige tu posición segura</string>
-    <string name="chooseDistance">¿Cuánto puedes alejarte de tu posición segura? (km)</string>
-    <string name="chooseTime">¿Cada cuanto tiempo quieres guardar tu ubicación? (min)</string>
+    <string name="chooseDistance">Distancia desde tu posición segura (km)</string>
+    <string name="chooseTime">Frecuencia de guardado de ubicación (min)</string>
     <string name="save">Guardar</string>
     <string name="savePos">Empieza a guardar tu posición</string>
     <string name="addFriend">Añadir amiga</string>
     <string name="titleNewFriend">Email de la nueva amiga</string>
     <string name="deleteHist" >Borrar historial de posiciones</string>
     <string name="changeLanguage">Hizkuntza aldatu</string>
+    <string name="find_user_s_location_friend">Ver</string>
 </resources>
