@@ -7,7 +7,6 @@
     <string name="lastName">Abizena</string>
     <string name="login">Saioa hasi</string>
     <string name="createAct">Kontua sortu</string>
-    <string name="title_activity_maps" translatable="false">MapsActivity</string>
     <string name="find_user_s_location">Posizioa bilatu</string>
     <string name="viewMap">Mapa ikusi</string>
     <string name="changeSettings">Ezarpenak</string>
@@ -24,4 +23,5 @@
     <string name="deleteHist" >Posizioen historiala atxindu</string>
     <string name="changeLanguage">Cambiar idioma</string>
     <string name="find_user_s_location_friend">Ikusi</string>
+    <string name="sendPass">Pasahitza bidali</string>
 </resources>

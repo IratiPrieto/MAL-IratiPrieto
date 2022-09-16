@@ -24,4 +24,5 @@
     <string name="deleteHist" >Borrar historial de posiciones</string>
     <string name="changeLanguage">Hizkuntza aldatu</string>
     <string name="find_user_s_location_friend">Ver</string>
+    <string name="sendPass">Enviar contraseña</string>
 </resources>

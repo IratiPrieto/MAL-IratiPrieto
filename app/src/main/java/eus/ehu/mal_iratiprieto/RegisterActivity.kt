@@ -43,51 +43,39 @@ class RegisterActivity : AppCompatActivity() {
         data = Data.getInstance()
     }
 
-/*Creamos un método para inicializar nuestros elementos del diseño y la autenticación y la base de datos de firebase*/
 
     private fun initialise() {
-        //llamamos nuestras vista
         txtName = findViewById(R.id.txtName)
         txtLastName = findViewById(R.id.txtLastName)
         txtEmail = findViewById(R.id.txtEmail)
         txtPassword = findViewById(R.id.txtPassword)
 
 
-/*Creamos una instancia para guardar los datos del usuario en nuestra base  de datos*/
         database = FirebaseDatabase.getInstance()
-/*Creamos una instancia para crear nuestra autenticación y guardar el usuario*/
         auth = FirebaseAuth.getInstance()
 
-/*reference nosotros leemos o escribimos en una ubicación específica la base de datos*/
         databaseReference = database.reference.child("Users")
     }
 
-    //Vamos a crear nuestro método para crear una nueva cuenta
     private fun createNewAccount() {
 
-        //Obtenemos los datos de nuestras cajas de texto
+        //Get data
         firstName = txtName.text.toString()
         lastName = txtLastName.text.toString()
         email = txtEmail.text.toString()
         password = txtPassword.text.toString()
 
-//Verificamos que los campos estén llenos
+//Everything filled up
         if (!TextUtils.isEmpty(firstName) && !TextUtils.isEmpty(lastName)
             && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
 
-
-//vamos a dar de alta el usuario con el correo y la contraseña
+            //Create user
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) {
 
-//Si está en este método quiere decir que todo salio bien en la autenticación
-
-/*Una vez que se dio de alta la cuenta vamos a dar de alta la información en la base de datos*/
-
-/*Vamos a obtener el id del usuario con que accedio con currentUser*/
                     val user:FirebaseUser = auth.currentUser!!
 
-//enviamos email de verificación a la cuenta del usuario
+
                     verifyEmail(user);
 
                     val profileUpdates = UserProfileChangeRequest.Builder().apply {
@@ -100,7 +88,6 @@ class RegisterActivity : AppCompatActivity() {
                     }
 
 
-/*Tabla users, ID=UID*/
                     val currentUserDb = databaseReference.child(user.uid)
 
                     currentUserDb.child("firstName").setValue(firstName)
@@ -108,7 +95,7 @@ class RegisterActivity : AppCompatActivity() {
                     currentUserDb.child("email").setValue(email)
                     uid = user.uid
                     data.user.id = uid
-/*Tabla sessions, ID=UID*/
+
                     val dbRef = FirebaseDatabase.getInstance().reference
                     dbRef.child("sessions").child(uid).setValue(uid)
 
@@ -123,21 +110,21 @@ class RegisterActivity : AppCompatActivity() {
 
                     data.user.name = firstName
 
-//Por último nos vamos a la vista home
+
                     updateUserInfoAndGoHome()
 
                 }.addOnFailureListener{
-// si el registro falla se mostrara este mensaje
-                    Toast.makeText(this, "Error en la autenticación.",
+//Register failed
+                    Toast.makeText(this, "Authentication error",
                         Toast.LENGTH_SHORT).show()
                 }
 
         } else {
-            Toast.makeText(this, "Llene todos los campos", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Fill in all the fields", Toast.LENGTH_SHORT).show()
         }
     }
 
-    //llamamos el método de crear cuenta en la accion registrar
+    //Kontua sortu
     fun register(view: View){
         createNewAccount()
     }
@@ -163,7 +150,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun verifyEmail(user: FirebaseUser) {
         user.sendEmailVerification()
             .addOnCompleteListener(this) {
-//Verificamos que la tarea se realizó correctamente
+            //Ondo egin da
                     task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this,

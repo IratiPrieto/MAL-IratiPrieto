@@ -266,11 +266,8 @@ class FriendsActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         Log.e(TAG, " ID: " + data.user.newFriend)
 
-                        //Toast.makeText(this, "Safe position saved", Toast.LENGTH_LONG).show()
-                        //startActivity(Intent(this, SettingsActivity::class.java))
                     }
 
-                    //  finish()
                 }
                 .continueWith(Continuation<DataSnapshot?, DataSnapshot?> {
                     (if(data.user.friendExists){
@@ -290,69 +287,10 @@ class FriendsActivity : AppCompatActivity() {
                     }) as DataSnapshot?
                 })
 
-
-
-            //startActivity(Intent(this, FriendsActivity::class.java))
         }
     }
 
 
-
-
-    /*fun getFriendID(){
-        val rootRef = FirebaseDatabase.getInstance().reference
-        val usersdRef = rootRef.child("Users")
-        usersdRef.addListenerForSingleValueEvent(object: ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (ds in snapshot.children) {
-                    val name = ds.child("email").getValue(String::class.java)
-                    Log.d("TAG", name!!)
-                    if(name == m_Text){
-                        val key = ds.key.toString()
-                        data.user.newFriend = key
-                    }
-
-
-           //         addFriend()
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {}
-
-        })
-    }*/
-    /*private fun add(){
-        //       user = new UserProfile();
-        val dbRef = FirebaseDatabase.getInstance().reference
-
-        val rootRef =
-            FirebaseDatabase.getInstance().getReference("sessions/" + data.user.id)
-        rootRef.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.hasChild("friends")) {
-                    val map = HashMap<String, Any>()
-                    map.set(data.user.newFriend, data.user.newFriend)
-                    dbRef.child("sessions").child(data.user.id).child("friends")
-                        .updateChildren(map)
-                    data.user.addFriend(data.user.newFriend)
-                } else {
-                    val map = HashMap<String, Any>()
-                    map.set("friends", "friends")
-                    dbRef.child("sessions").child(data.user.id).updateChildren(map)
-                    val map2 = HashMap<String, Any>()
-                    map2.set(data.user.newFriend, data.user.newFriend)
-                    dbRef.child("sessions").child(data.user.id).child("friends")
-                        .updateChildren(map2)
-                    data.user.addFriend(data.user.newFriend)
-                }
-
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                //some code
-            }
-        })
-    }*/
 }
 
 

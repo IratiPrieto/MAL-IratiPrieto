@@ -24,9 +24,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
     private lateinit var data: Data
-    //private lateinit var mProgressBar: ProgressDialog
 
-    //Creamos nuestra variable de autenticación firebase
+    //Firebaserako autentikazio aldagaia
     private lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         initialise()
     }
 
-    /*Creamos un método para inicializar nuestros elementos del diseño y la autenticación de firebase*/
+
     private fun initialise() {
         etEmail = findViewById(R.id.etEmail)
         etPassword = findViewById(R.id.etPassword)
@@ -43,31 +42,28 @@ class MainActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
     }
 
-//Ahora vamos a Iniciar sesión con firebase es muy sencillo
+//Saioa hasi
 
     private fun loginUser() {
-        //Obtenemos usuario y contraseña
+        //Erabiltzaile eta pasahitza lortu
         email = etEmail.text.toString()
         password = etPassword.text.toString()
-        //Verificamos que los campos no este vacios
+        //Ezin dira hutsik egon
         if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
 
-            //Mostramos el progressdialog
-     //       mProgressBar.setMessage("Registering User...")
-      //      mProgressBar.show()
 
-            //Iniciamos sesión con el método signIn y enviamos usuario y contraseña
+
+            //Saioa hasi
             mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) {
 
-                    //Verificamos que la tarea se ejecutó correctamente
                         task ->
                     if (task.isSuccessful) {
-                        // Si se inició correctamente la sesión vamos a la vista Home de la aplicación
+                        // Saioa ondo hasi da
 
-                        goHome() // Creamos nuestro método en la parte de abajo
+                        goHome()
                     } else {
-                        // sino le avisamos el usuairo que orcurrio un problema
+                        // Ez da ondo hasi
                         Toast.makeText(this, "Authentication failed.",
                             Toast.LENGTH_SHORT).show()
                     }
@@ -104,21 +100,17 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-/* Tenemos que crear nuestros métodos con el mismo nombre que le agregamos a nuestros botones en el atributo onclick y forzosamente tenemos que recibir un parámetro view para que sea reconocido como click de nuestro button ya que en view podemos modificar los atributos*/
 
-    /*Primero creamos nuestro evento login dentro de este llamamos nuestro método loginUser al dar click en el botón se iniciara sesión */
     fun login(view: View) {
         loginUser()
     }
 
-/*Si se olvido de la contraseña lo enviaremos en la siguiente actividad nos marcara error porque necesitamos crear la actividad*/
 
     fun forgotPassword(view: View) {
         startActivity(Intent(this,
             ForgotPasswordActivity::class.java))
     }
 
-/*Si quiere registrarse lo enviaremos en la siguiente actividad nos marcara error porque necesitamos crear la actividad*/
 
     fun register(view: View) {
         startActivity(Intent(this, RegisterActivity::class.java))

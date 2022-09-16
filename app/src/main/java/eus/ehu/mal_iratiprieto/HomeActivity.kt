@@ -98,7 +98,7 @@ class HomeActivity : AppCompatActivity(){
         Locator.getBackend().temp
             .addOnCompleteListener { task: Task<UserProfile?> ->
                 if (task.isSuccessful) {
-                    Toast.makeText(this, "Safe position saved1", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Saving...", Toast.LENGTH_LONG).show()
 
                 }
               //  finish()
@@ -106,7 +106,7 @@ class HomeActivity : AppCompatActivity(){
         Locator.getBackend().saveTemp()
             .addOnCompleteListener { task: Task<DataSnapshot?> ->
                 if (task.isSuccessful) {
-                    Toast.makeText(this, "Safe position saved2", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Saving...", Toast.LENGTH_LONG).show()
 
                 }
 

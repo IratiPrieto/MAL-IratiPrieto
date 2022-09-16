@@ -41,7 +41,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
                     }
                 }
         } else {
-            Toast.makeText(this, "Add email", Toast.LENGTH_SHORT).show()
+          //  Toast.makeText(this, "Add email", Toast.LENGTH_SHORT).show()
         }
     }
     private fun goMain() {
